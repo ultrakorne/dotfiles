@@ -77,6 +77,15 @@
       "g f": "file_finder::Toggle",
       "space c": "editor::ToggleComments",
       "ctrl-w": "pane::CloseActiveItem",
+      "space r": "editor::Format",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      // Indent/outdent while keeping visual selection
+      ">": "editor::Indent",
+      "<": "editor::Outdent",
     },
   },
   {
