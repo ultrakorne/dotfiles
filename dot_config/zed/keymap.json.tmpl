@@ -1,0 +1,88 @@
+{{- $mod := "super" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{- $mod = "cmd" -}}
+{{- end -}}
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // File finder (works globally)
+      "alt-f": "file_finder::Toggle",
+
+      // Close current tab/split
+      "ctrl-w": "pane::CloseActiveItem",
+
+      // Tab switching by number (matching Ghostty alt+N)
+      "alt-1": ["pane::ActivateItem", 0],
+      "alt-2": ["pane::ActivateItem", 1],
+      "alt-3": ["pane::ActivateItem", 2],
+      "alt-4": ["pane::ActivateItem", 3],
+      "alt-5": ["pane::ActivateItem", 4],
+      "alt-6": ["pane::ActivateItem", 5],
+      "alt-7": ["pane::ActivateItem", 6],
+      "alt-8": ["pane::ActivateItem", 7],
+      "alt-9": "pane::ActivateLastItem",
+
+      // Tab navigation (previous/next)
+      "ctrl-shift-left": "pane::ActivatePreviousItem",
+      "ctrl-shift-right": "pane::ActivateNextItem",
+
+      // New tab
+      "ctrl-shift-t": "workspace::NewFile",
+
+      // Split creation
+      "ctrl-shift-e": "pane::SplitDown",
+      "ctrl-shift-o": "pane::SplitRight",
+
+      // Navigation between splits
+      "ctrl-alt-up": "workspace::ActivatePaneUp",
+      "ctrl-alt-down": "workspace::ActivatePaneDown",
+      "ctrl-alt-left": "workspace::ActivatePaneLeft",
+      "ctrl-alt-right": "workspace::ActivatePaneRight",
+
+      // Resize splits (uses vim actions but works globally)
+      "{{ $mod }}-ctrl-shift-up": "vim::ResizePaneUp",
+      "{{ $mod }}-ctrl-shift-down": "vim::ResizePaneDown",
+      "{{ $mod }}-ctrl-shift-left": "vim::ResizePaneLeft",
+      "{{ $mod }}-ctrl-shift-right": "vim::ResizePaneRight",
+
+      // Reset/maximize pane sizes
+      "{{ $mod }}-ctrl-shift-=": "vim::ResetPaneSizes",
+      "{{ $mod }}-ctrl-shift-m": "workspace::ToggleZoom",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // Override editor defaults that conflict with tab/split/navigation bindings
+      "ctrl-shift-left": "pane::ActivatePreviousItem",
+      "ctrl-shift-right": "pane::ActivateNextItem",
+      "ctrl-shift-e": "pane::SplitDown",
+      "ctrl-alt-up": "workspace::ActivatePaneUp",
+      "ctrl-alt-down": "workspace::ActivatePaneDown",
+      "ctrl-alt-left": "workspace::ActivatePaneLeft",
+      "ctrl-alt-right": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "g f": "file_finder::Toggle",
+      "space c": "editor::ToggleComments",
+      "ctrl-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j k": "vim::SwitchToNormalMode",
+    },
+  },
+]
