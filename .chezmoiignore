@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "darwin" }}
+.config/Code/
+{{ end }}
+{{ if eq .chezmoi.os "linux" }}
+Library/
+{{ end }}
