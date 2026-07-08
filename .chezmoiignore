@@ -3,4 +3,6 @@
 {{ end }}
 {{ if eq .chezmoi.os "linux" }}
 Library/
+# Omarchy owns the live theme (symlink); don't let chezmoi manage it on Linux
+.config/nvim/lua/plugins/theme.lua
 {{ end }}
