@@ -1,0 +1,35 @@
+onboarding = false
+
+[keys]
+# prefix on ctrl+space (Herdr allows only ONE prefix — this replaces the ctrl+b default)
+prefix = "ctrl+space"
+# horizontal (top/bottom) split on prefix+h  (default was prefix+minus)
+split_horizontal = "prefix+h"
+# focus panes with prefix+arrows AND ctrl+alt+arrows (latter falls through from Ghostty)
+focus_pane_left = ["prefix+left", "ctrl+alt+left"]
+focus_pane_down = ["prefix+down", "ctrl+alt+down"]
+focus_pane_up = ["prefix+up", "ctrl+alt+up"]
+focus_pane_right = ["prefix+right", "ctrl+alt+right"]
+# zoom/fullscreen the active pane (already the default; kept explicit)
+zoom = "prefix+z"
+# space nav is DEFERRED via the picker/navigate surface (prefix+w): browse, commit with Enter.
+# drive that surface with j/k instead of the arrows (Enter still selects, Esc cancels):
+navigate_workspace_down = "j"
+navigate_workspace_up = "k"
+# move between agents (shift+arrows, since plain prefix+arrows now focus panes)
+previous_agent = "prefix+shift+up"
+next_agent = "prefix+shift+down"
+# jump back to the previously-focused pane (GLOBAL toggle across spaces):
+# after prefix+a lands you on the blocked agent, this bounces you back, and again returns
+last_pane = "prefix+backtick"
+
+# jump straight to the first BLOCKED agent (deterministic; keeps space grouping).
+# prefix+o only targets a *delivered* notification — this reads the agent state directly.
+[[keys.command]]
+key = "prefix+a"
+type = "shell"
+command = "{{ .chezmoi.homeDir }}/.local/bin/herdr agent focus \"$({{ .chezmoi.homeDir }}/.local/bin/herdr pane list | /usr/bin/jq -r '.result.panes[]|select(.agent_status==\"blocked\")|.pane_id' | head -1)\""
+
+[ui.toast]
+# in-app toast so you actually SEE an agent go blocked (terminal delivery showed nothing)
+delivery = "terminal"
