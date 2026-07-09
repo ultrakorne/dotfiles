@@ -12,6 +12,11 @@ focus_pane_up = ["prefix+up", "ctrl+alt+up"]
 focus_pane_right = ["prefix+right", "ctrl+alt+right"]
 # zoom/fullscreen the active pane (already the default; kept explicit)
 zoom = "prefix+z"
+# switch tabs: keep the prefix+p/prefix+n defaults AND add ctrl+shift+alt+arrows
+# (no prefix). Ghostty's own tab switch is ctrl+shift+arrows, so the extra alt keeps
+# this combo distinct and lets it fall through to Herdr (like the focus_pane ctrl+alt).
+previous_tab = ["prefix+p", "ctrl+shift+alt+left"]
+next_tab = ["prefix+n", "ctrl+shift+alt+right"]
 # space nav is DEFERRED via the picker/navigate surface (prefix+w): browse, commit with Enter.
 # drive that surface with j/k instead of the arrows (Enter still selects, Esc cancels):
 navigate_workspace_down = "j"
