@@ -3,8 +3,11 @@ onboarding = false
 [keys]
 # prefix on ctrl+space (Herdr allows only ONE prefix — this replaces the ctrl+b default)
 prefix = "ctrl+space"
-# horizontal (top/bottom) split on prefix+h  (default was prefix+minus)
-split_horizontal = "prefix+h"
+# horizontal (top/bottom) split on prefix+h AND ctrl+shift+alt+e (no prefix, falls
+# through from Ghostty like the ctrl+alt / ctrl+shift+alt arrows). default was prefix+minus.
+split_horizontal = ["prefix+h", "ctrl+shift+alt+e"]
+# vertical (left/right) split on prefix+v (herdr default) AND ctrl+shift+alt+o (no prefix)
+split_vertical = ["prefix+v", "ctrl+shift+alt+o"]
 # focus panes with prefix+arrows AND ctrl+alt+arrows (latter falls through from Ghostty)
 focus_pane_left = ["prefix+left", "ctrl+alt+left"]
 focus_pane_down = ["prefix+down", "ctrl+alt+down"]
