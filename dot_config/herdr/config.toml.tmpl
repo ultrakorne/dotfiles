@@ -21,6 +21,11 @@ next_tab = ["prefix+n", "ctrl+shift+alt+right"]
 # drive that surface with j/k instead of the arrows (Enter still selects, Esc cancels):
 navigate_workspace_down = "j"
 navigate_workspace_up = "k"
+# ...but ALSO allow immediate space jumps with ctrl+shift+alt+up/down (no prefix),
+# mirroring the tab arrows: left/right = tabs, up/down = spaces. up = previous space
+# (higher in the sidebar), down = next. The prefix+w picker above still works too.
+previous_workspace = "ctrl+shift+alt+up"
+next_workspace = "ctrl+shift+alt+down"
 # move between agents (shift+arrows, since plain prefix+arrows now focus panes)
 previous_agent = "prefix+shift+up"
 next_agent = "prefix+shift+down"
