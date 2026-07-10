@@ -20,4 +20,20 @@ return {
       },
     },
   },
+  -- Marksman has no config to disable diagnostics, and it flags every `[[Term]]`
+  -- glossary/wiki-link as a "non-existent"/"ambiguous" document. Those links are
+  -- intentional (docs glossary + memory notes), so silence marksman diagnostics
+  -- while keeping its completion/nav/hover. markdownlint (style) is unaffected.
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        marksman = {
+          handlers = {
+            ["textDocument/publishDiagnostics"] = function() end,
+          },
+        },
+      },
+    },
+  },
 }
