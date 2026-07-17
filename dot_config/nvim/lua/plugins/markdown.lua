@@ -36,4 +36,18 @@ return {
       },
     },
   },
+  -- blink fuzzy-matches subsequences, so friendly-snippets fires on ordinary prose:
+  -- `diso`/`timeHMS` (its global.json, loaded for every filetype) both match "is",
+  -- `unordered list` matches "list". Drop the snippets source in markdown only; lsp
+  -- stays so marksman still completes `[[Term]]` links.
+  {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        per_filetype = {
+          markdown = { "lsp", "path", "buffer" },
+        },
+      },
+    },
+  },
 }
