@@ -9,4 +9,8 @@ Library/
 .config/nvim/lua/plugins/theme.lua
 .config/nvim/lua/plugins/all-themes.lua
 .config/nvim/lua/plugins/omarchy-theme-hotreload.lua
+# Follows from the above: Omarchy and this repo declare different theme plugins,
+# so the lockfile can't be identical on both OSes. Each Linux box keeps its own;
+# the tracked copy stays pinned for macOS.
+.config/nvim/lazy-lock.json
 {{ end }}
