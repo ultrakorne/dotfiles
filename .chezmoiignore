@@ -3,6 +3,10 @@
 {{ end }}
 {{ if eq .chezmoi.os "linux" }}
 Library/
-# Omarchy owns the live theme (symlink); don't let chezmoi manage it on Linux
+# Omarchy owns these on Linux; the repo copies exist only so macOS (no Omarchy)
+# still gets a working theme setup. Letting chezmoi apply them on Linux rolls the
+# omarchy-nvim package's files backwards -- see /usr/share/omarchy-nvim/config/.
 .config/nvim/lua/plugins/theme.lua
+.config/nvim/lua/plugins/all-themes.lua
+.config/nvim/lua/plugins/omarchy-theme-hotreload.lua
 {{ end }}
