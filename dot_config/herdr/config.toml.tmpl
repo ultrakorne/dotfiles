@@ -45,7 +45,15 @@ last_pane = "prefix+backtick"
 [[keys.command]]
 key = "prefix+a"
 type = "shell"
-command = "{{ .chezmoi.homeDir }}/.local/bin/herdr agent focus \"$({{ .chezmoi.homeDir }}/.local/bin/herdr pane list | /usr/bin/jq -r '.result.panes[]|select(.agent_status==\"blocked\")|.pane_id' | head -1)\""
+command = "/usr/bin/herdr agent focus \"$(/usr/bin/herdr pane list | /usr/bin/jq -r '.result.panes[]|select(.agent_status==\"blocked\")|.pane_id' | head -1)\""
+
+# link hints plugin (ultrakorne/herdr-link-hints): label every link on the focused
+# pane, press the letter to open it, uppercase to copy. prefix+u again dismisses.
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "linkhints.toggle"
+description = "link hints"
 
 [ui.toast]
 # in-app toast so you actually SEE an agent go blocked (terminal delivery showed nothing)
