@@ -40,15 +40,16 @@ next_agent = "prefix+shift+down"
 # after prefix+a lands you on the blocked agent, this bounces you back, and again returns
 last_pane = "prefix+backtick"
 
-# jump straight to the first BLOCKED agent (deterministic; keeps space grouping).
+# jump to the agent needing attention: BLOCKED first, then DONE (finished, unseen).
 # prefix+o only targets a *delivered* notification — this reads the agent state directly.
 [[keys.command]]
 key = "prefix+a"
 type = "shell"
-command = "/usr/bin/herdr agent focus \"$(/usr/bin/herdr pane list | /usr/bin/jq -r '.result.panes[]|select(.agent_status==\"blocked\")|.pane_id' | head -1)\""
+command = "{{ .chezmoi.homeDir }}/.local/bin/herdr-jump-agent"
 
-# link hints plugin (ultrakorne/herdr-link-hints): label every link on the focused
-# pane, press the letter to open it, uppercase to copy. prefix+u again dismisses.
+# link hints plugin (ultrakorne/herdr-link-hints, installed by run_onchange_after_herdr-plugins.sh):
+# label every link on the focused pane, press the letter to open it, uppercase to copy.
+# prefix+u again dismisses.
 [[keys.command]]
 key = "prefix+u"
 type = "plugin_action"

@@ -1,0 +1,13 @@
+#!/bin/sh
+# Jump to the agent that needs attention: blocked (approval/question) first,
+# then done (finished, not yet seen). Most recent state change wins within each.
+# Bound to prefix+a in ~/.config/herdr/config.toml.
+# herdr is ~/.local/bin/herdr on macOS and /usr/bin/herdr on Omarchy.
+PATH="$PATH:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin"
+herdr="${HERDR_BIN_PATH:-$(command -v herdr)}" || exit 0
+pane=$("$herdr" agent list | jq -r '
+  [.result.agents[] | select(.focused | not)
+   | select(.agent_status == "blocked" or .agent_status == "done")]
+  | sort_by([(if .agent_status == "blocked" then 0 else 1 end), -.state_change_seq])
+  | .[0].pane_id // empty')
+[ -n "$pane" ] && exec "$herdr" agent focus "$pane"
