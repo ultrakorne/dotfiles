@@ -230,6 +230,20 @@
     "when": "terminalFocus"
   },
   {
+    "key": "alt+z",
+    "command": "rightPanel.toggleMaximized"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "terminal.splitVertical",
+    "when": "terminalFocus"
+  },
+  {
     "key": "mod+shift+c",
     "command": "thread.copyReference",
     "when": "!terminalFocus"
