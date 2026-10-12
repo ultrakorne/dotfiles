@@ -130,19 +130,12 @@
     "when": "!terminalFocus"
   },
   {
-    "key": "mod+n",
-    "command": "chat.new",
-    "when": "!terminalFocus"
+    "key": "alt+shift+n",
+    "command": "chat.new"
   },
   {
-    "key": "mod+shift+o",
-    "command": "chat.new",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "mod+shift+n",
-    "command": "chat.newLocal",
-    "when": "!terminalFocus"
+    "key": "alt+shift+o",
+    "command": "chat.newLocal"
   },
   {
     "key": "mod+alt+n",
