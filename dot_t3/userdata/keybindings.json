@@ -257,47 +257,47 @@
     "when": "!terminalFocus && !editableFocus"
   },
   {
-    "key": "mod+1",
+    "key": "alt+1",
     "command": "thread.jump.1",
     "when": "isDesktop"
   },
   {
-    "key": "mod+2",
+    "key": "alt+2",
     "command": "thread.jump.2",
     "when": "isDesktop"
   },
   {
-    "key": "mod+3",
+    "key": "alt+3",
     "command": "thread.jump.3",
     "when": "isDesktop"
   },
   {
-    "key": "mod+4",
+    "key": "alt+4",
     "command": "thread.jump.4",
     "when": "isDesktop"
   },
   {
-    "key": "mod+5",
+    "key": "alt+5",
     "command": "thread.jump.5",
     "when": "isDesktop"
   },
   {
-    "key": "mod+6",
+    "key": "alt+6",
     "command": "thread.jump.6",
     "when": "isDesktop"
   },
   {
-    "key": "mod+7",
+    "key": "alt+7",
     "command": "thread.jump.7",
     "when": "isDesktop"
   },
   {
-    "key": "mod+8",
+    "key": "alt+8",
     "command": "thread.jump.8",
     "when": "isDesktop"
   },
   {
-    "key": "mod+9",
+    "key": "alt+9",
     "command": "thread.jump.9",
     "when": "isDesktop"
   },
